@@ -1,13 +1,25 @@
 import React from 'react';
-import { Grid } from "reakit";
+import { Grid, Box, Flex, InlineBlock, InlineFlex, Input, Button } from "reakit";
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
 const Title = styled.h1`
-  text-align: center;
-  font-size: 3em;
+    text-align: center;
+    font-size: 2em;
+`;
+
+const StyledButton = styled.div`
+    position: fixed;
+    right: 70px;
+    align-self: center;
+`;
+
+const StyledInput = styled(Input)`
+    margin: auto;
+    width: 40em;
+    height: 5em;
 `;
 
 const StyledGrid = styled(Grid)`
@@ -25,9 +37,17 @@ const StyledGridItem = styled(Grid.Item)`
 `;
 
 const Main = () => {
+
+    const handleAdd = () => { alert('ADD'); };
     return (
         <>
-            <Title>ToDo:</Title>
+            <Title>ToDo List</Title>
+            <Flex position="relative">
+                <StyledInput as="textarea" />
+                <StyledButton>
+                    <Button onClick={handleAdd} width="10em" height="2em">ADD</Button>
+                </StyledButton>
+            </Flex>
             <StyledGrid columns="repeat(2, 1fr)" autoRows="auto" gap="3vw">
                 <StyledGridItem>
                     Non proident duis cupidatat veniam ea. Lorem esse ullamco do velit voluptate
