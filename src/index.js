@@ -6,7 +6,6 @@ import theme from "reakit-theme-default";
 
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
-import App from './App';
 import Main from './components/Main';
 import * as serviceWorker from './serviceWorker';
 

@@ -5,21 +5,13 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
+import AddItem  from './AddItem';
+
+import ToDoItem from '../data/ToDoItem';
+
 const Title = styled.h1`
     text-align: center;
     font-size: 2em;
-`;
-
-const StyledButton = styled.div`
-    position: fixed;
-    right: 70px;
-    align-self: center;
-`;
-
-const StyledInput = styled(Input)`
-    margin: auto;
-    width: 40em;
-    height: 5em;
 `;
 
 const StyledGrid = styled(Grid)`
@@ -28,19 +20,46 @@ const StyledGrid = styled(Grid)`
     }
 `;
 
+const width = "400px";
+
 const StyledGridItem = styled(Grid.Item)`
     && {
         border: 2px solid grey;
         border-radius: 8px;
         background-color: white;
         padding: 15px;
+        width: ${width};
+        margin: auto;
     }
+`;
+
+const StyledEmptyGridItem = styled(Grid.Item)`
+    && {
+        width: ${width};
+        margin: auto;
+        text-align: center;
+    }
+`;
+
+const StyledGridDone = styled(Grid.Item)`
+    align-self: center;
+    margin: auto;
+`;
+
+const template = `
+    "a a b c c" 60px
 `;
 
 const Main = () => {
 
+    const [items, setItems] = useState([]);
+
     const handleAdd = (value) => {
-        alert('ADD: ' + value);
+        setItems(items => [new ToDoItem(value)].concat(items));
+    };
+
+    const handleChange = (item) => {
+        setItems(items => [...items]);
     };
 
     return (
@@ -49,43 +68,48 @@ const Main = () => {
             <Flex position="relative">
                 <AddItem onAdd={handleAdd} />
             </Flex>
-            <StyledGrid columns="repeat(2, 1fr)" autoRows="auto" gap="3vw">
-                <StyledGridItem>
-                    Non proident duis cupidatat veniam ea. Lorem esse ullamco do velit voluptate
-                    anim eiusmod pariatur aute ullamco est. Magna incididunt elit dolor quis
-                </StyledGridItem>
-                <StyledGridItem>
-                    Culpa aliquip ex sunt duis. Nulla magna reprehenderit fugiat in proident
-                    officia laboris reprehenderit proident est pariatur eiusmod.
-                </StyledGridItem>
-                <StyledGridItem>
-                    Commodo magna aliqua reprehenderit amet ex dolor sunt enim aliquip. Nulla
-                </StyledGridItem>
+            <StyledGrid autoRows="auto" gap="3vw">
+            <Grid template={template} gap="3vw">
+                <StyledEmptyGridItem area="a">111</StyledEmptyGridItem><StyledGridDone area="b">222</StyledGridDone><StyledEmptyGridItem area="c">333</StyledEmptyGridItem>
+                </Grid>
+                {items.map((item) => (<Item item={item} onChange={handleChange} key={item.id()} />))}
             </StyledGrid>
         </>
     );
 };
 
-const AddItem = ({ onAdd }) => {
+const Item = ({ item, onChange }) => {
 
-    const [value, setValue] = useState('');
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    };
-
-    const handleAdd = () => {
-        onAdd(value);
+    const handleDoneChange = () => {
+        const done = !item.done();
+        onChange(item.done(done));
     };
     
     return (
-        <>
-            <StyledInput as="textarea" value={value} onChange={handleChange} />
-            <StyledButton>
-                <Button onClick={handleAdd} width="10em" height="2em">ADD</Button>
-            </StyledButton>
-        </>
-    )
+        <Grid template={template} gap="3vw">
+            { !item.done() ? (
+                    <StyledGridItem area="a">
+                        {item.text()}
+                    </StyledGridItem>
+                ) : (<StyledEmptyGridItem area="a" />)
+            }
+            
+            <StyledGridDone area="b">
+                <Input type="checkbox" value={item.done()} onChange={handleDoneChange} width="25px" height="25px" cursor="pointer"/>
+            </StyledGridDone>
+
+            { item.done() ? (
+                    <StyledGridItem area="c">
+                        {item.text()}
+                    </StyledGridItem>
+                ) : (<StyledEmptyGridItem area="c" />)
+            }
+        </Grid>
+    );
+};
+
+Item.propTypes = {
+    item: PropTypes.instanceOf(ToDoItem).isRequired
 };
 
 export default Main;
