@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-weight: 500;
+        font-family: Roboto;
     }
 
     h1 {
@@ -30,7 +31,7 @@ ReactDOM.render(
     (
         <Provider theme={theme}>
             <>
-                <GlobalStyle backgroundColor="white" bodyColor="#222" />
+                <GlobalStyle backgroundColor="lightgrey" bodyColor="#222" />
                 <Main />
             </>
         </Provider>

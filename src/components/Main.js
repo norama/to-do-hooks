@@ -31,22 +31,23 @@ const StyledGrid = styled(Grid)`
 const StyledGridItem = styled(Grid.Item)`
     && {
         border: 2px solid grey;
-        background-color: red;
+        border-radius: 8px;
+        background-color: white;
         padding: 15px;
     }
 `;
 
 const Main = () => {
 
-    const handleAdd = () => { alert('ADD'); };
+    const handleAdd = (value) => {
+        alert('ADD: ' + value);
+    };
+
     return (
         <>
             <Title>ToDo List</Title>
             <Flex position="relative">
-                <StyledInput as="textarea" />
-                <StyledButton>
-                    <Button onClick={handleAdd} width="10em" height="2em">ADD</Button>
-                </StyledButton>
+                <AddItem onAdd={handleAdd} />
             </Flex>
             <StyledGrid columns="repeat(2, 1fr)" autoRows="auto" gap="3vw">
                 <StyledGridItem>
@@ -63,6 +64,28 @@ const Main = () => {
             </StyledGrid>
         </>
     );
+};
+
+const AddItem = ({ onAdd }) => {
+
+    const [value, setValue] = useState('');
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    };
+
+    const handleAdd = () => {
+        onAdd(value);
+    };
+    
+    return (
+        <>
+            <StyledInput as="textarea" value={value} onChange={handleChange} />
+            <StyledButton>
+                <Button onClick={handleAdd} width="10em" height="2em">ADD</Button>
+            </StyledButton>
+        </>
+    )
 };
 
 export default Main;
