@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import App from './App';
+import Main from './components/Main';
 import * as serviceWorker from './serviceWorker';
 
 const GlobalStyle = createGlobalStyle`
@@ -33,8 +34,8 @@ ReactDOM.render(
     (
         <ThemeProvider theme={theme}>
             <>
-                <GlobalStyle backgroundColor="turquoise" bodyColor="#222" />
-                <App />
+                <GlobalStyle backgroundColor="white" bodyColor="#222" />
+                <Main />
             </>
         </ThemeProvider>
     ),
