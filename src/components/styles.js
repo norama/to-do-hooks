@@ -39,8 +39,20 @@ export const StyledItemList = styled.div`
     width: 100%;
 `;
 
+const itemHeightUnits = 5;
+const itemHeight = "" + itemHeightUnits + "em";
+const panelHeight = "" + (10 * itemHeightUnits) + "em";
 
-const itemHeight = "5em";
+export const StyledScrollPanel = styled.div`
+    width: 100%;
+    height: ${panelHeight};
+    overflow-y: auto;
+`;
+
+export const StyledScrollContent = styled.div`
+    margin-right: 10px;
+    margin-left: 10px;
+`;
 
 export const StyledItem = styled.div`
     width: 100%;
@@ -59,6 +71,13 @@ export const StyledCheckbox = styled(Input)`
     cursor: pointer;
 `;
 
+export const StyledItemHeader = styled(Row)`
+    && {
+        margin: 10px 20px;
+        width: 96%;
+    }
+`;
+
 export const StyledItemRow = styled(Row)`
     && {
         margin: 20px;
@@ -72,7 +91,7 @@ export const StyledDatetimeWrapper = styled.div`
 `;
 
 export const StyledDatetime = styled.div`
-    margin: 1.8em auto;
+    margin: 1.7em auto;
 `;
 
 export const StyledDisabledDatetime = styled.div`
