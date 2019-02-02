@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from "reakit";
-import theme from "reakit-theme-default";
-
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import BootstrapProvider from '@bootstrap-styled/provider';
 
 import Main from './components/Main';
 import * as serviceWorker from './serviceWorker';
@@ -18,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-weight: 500;
-        font-family: Roboto;
+        font-family: ${p => p.theme.fontFamily};
     }
 
     h1 {
@@ -26,14 +24,18 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+const theme = {
+    fontFamily: "Montserrat"
+};
+
 ReactDOM.render(
     (
-        <Provider theme={theme}>
+        <ThemeProvider theme={theme}>
             <>
                 <GlobalStyle backgroundColor="lightgrey" bodyColor="#222" />
                 <Main />
             </>
-        </Provider>
+        </ThemeProvider>
     ),
     document.getElementById('root')
 );

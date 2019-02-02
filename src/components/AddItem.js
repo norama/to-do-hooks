@@ -1,24 +1,11 @@
 import React from 'react';
 
-import { Grid, Box, Flex, InlineBlock, InlineFlex, Input, Button } from "reakit";
+import { Row, Col, Textarea, Button } from "@bootstrap-styled/v4";
 
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
-
-const StyledButton = styled.div`
-    position: fixed;
-    right: 70px;
-    align-self: center;
-`;
-
-const StyledInput = styled(Input)`
-    margin: auto;
-    width: 40em;
-    height: 5em;
-`;
-
+import { StyledButton, StyledTextarea } from './styles';
 
 const AddItem = ({ onAdd }) => {
 
@@ -30,15 +17,15 @@ const AddItem = ({ onAdd }) => {
 
     const handleAdd = () => {
         onAdd(value);
+        setValue('');
     };
     
     return (
-        <>
-            <StyledInput as="textarea" value={value} onChange={handleChange} />
-            <StyledButton>
-                <Button onClick={handleAdd} width="10em" height="2em">ADD</Button>
-            </StyledButton>
-        </>
+        <Row>
+            <Col md={4}></Col>
+            <Col md={4}><StyledTextarea value={value} onChange={handleChange} /></Col>
+            <Col md={4}><StyledButton onClick={handleAdd}>ADD</StyledButton></Col>
+        </Row>
     )
 };
 
