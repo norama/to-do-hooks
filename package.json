@@ -5,7 +5,9 @@
   "dependencies": {
     "@bootstrap-styled/provider": "^1.4.2",
     "@bootstrap-styled/v4": "^2.0.22",
+    "moment": "^2.24.0",
     "prop-types": "^15.6.2",
+    "rc-datetime-picker": "^1.6.1",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
     "react-scripts": "2.1.3",

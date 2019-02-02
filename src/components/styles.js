@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Row, Input, H1, H2, Button, Textarea } from "@bootstrap-styled/v4";
 
+
 export const StyledH1 = styled(H1)`
     margin: 1em auto;
     text-align: center;
@@ -21,6 +22,9 @@ export const StyledH2 = styled(H2)`
 
 export const StyledButton = styled(Button)`
     margin: 1em auto 1em 6px;
+    && {
+        font-weight: 600;
+    }
 `;
 
 export const StyledTextarea = styled(Textarea)`
@@ -59,4 +63,23 @@ export const StyledItemRow = styled(Row)`
     && {
         margin: 20px;
     }
+`;
+
+
+export const StyledDatetimeWrapper = styled.div`
+    width: 100%;
+    display: flex;
+`;
+
+export const StyledDatetime = styled.div`
+    margin: 1.8em auto;
+`;
+
+export const StyledDisabledDatetime = styled.div`
+    margin: 1.5em auto;
+`;
+
+export const StyledDisabledInput = styled.input`
+    background-color: #EBEBE4;
+    border: 1px solid darkgrey;
 `;
