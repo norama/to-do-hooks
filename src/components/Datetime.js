@@ -12,6 +12,8 @@ const format = (datetime) => (
     datetime ? ' ' + datetime.format('DD.MM.YYYY HH:mm') : ''
 );
 
+export const formatDatetime = (datetime) => (datetime.format('DD.MM.YYYY HH:mm'));
+
 export const DatetimePicker = ({ datetime, onChange }) => {
 
     const datetimeShortcuts = {

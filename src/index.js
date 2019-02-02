@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import BootstrapProvider from '@bootstrap-styled/provider';
 
+import { GLOBAL_STYLE } from './components/styles';
+
 import Main from './components/Main';
 import * as serviceWorker from './serviceWorker';
 
@@ -32,7 +34,7 @@ ReactDOM.render(
     (
         <ThemeProvider theme={theme}>
             <>
-                <GlobalStyle backgroundColor="lightgrey" bodyColor="#222" />
+                <GlobalStyle {...GLOBAL_STYLE} />
                 <Main />
             </>
         </ThemeProvider>

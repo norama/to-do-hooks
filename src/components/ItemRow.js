@@ -1,6 +1,8 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+import { toast } from 'react-toastify';
 
 import { Row, Col } from "@bootstrap-styled/v4";
 
@@ -10,24 +12,57 @@ import { StyledDatetimeWrapper, StyledDatetime, StyledDisabledDatetime } from '.
 import { DatetimePicker, Datetime } from './Datetime';
 import ToDoItem from '../data/ToDoItem';
 
-const ItemRow = ({ item, onChange }) => {
+import { formatDatetime } from './Datetime';
+
+const summary = (item) => {
+    const text = item.text();
+    return text.length < 10 ? text : text.substring(0, 10) + " ...";
+};
+
+const reminderContent = (item) => (
+    "Reminder for TODO ("+summary(item)+") due at: "+formatDatetime(item.reminder())
+);
+
+const ItemRow = ({ item, onChange, remind, onRemindFinished }) => {
+
+    useEffect(() => {
+
+        const reminder = () => {
+            toast.info(reminderContent(item), {
+                onOpen: () => {
+                    const element = document.getElementById(item.id());
+                    element.scrollIntoView({ behavior: "smooth" });
+                },
+                onClose: () => {
+                    onRemindFinished(item.id(), item.datetime(null));
+                },
+                position: toast.POSITION.TOP_LEFT,
+                autoClose: 30000
+            });
+        };
+
+        if (remind) {
+            reminder();
+        }
+
+    }, [remind]);
 
     const handleDoneChange = () => {
         const done = !item.done();
-        onChange(item.done(done));
+        onChange(item.id(), item.done(done));
     };
 
     const handleTextChange = (e) => {
         const text = e.target.value;
-        onChange(item.text(text));
+        item.text(text);
     };
 
     const handleReminderChange = (datetime) => {
-        onChange(item.datetime(datetime));
+        onChange(item.id(), item.datetime(datetime));
     };
 
     return (
-        <StyledItemRow>
+        <StyledItemRow id={item.id()} remind={remind}>
             <Col md={2}>
                 { !item.done() ? (
                     <StyledDatetimeWrapper>
@@ -40,7 +75,7 @@ const ItemRow = ({ item, onChange }) => {
 
             <Col md={3}>
                 { !item.done() ? (
-                    <StyledTextarea value={item.text()} onChange={handleTextChange} />
+                    <StyledTextarea defaultValue={item.text()} onChange={handleTextChange} />
                 ) : null }
             </Col>
 

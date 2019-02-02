@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Row, Input, H1, H2, Button, Textarea } from "@bootstrap-styled/v4";
 
+export const GLOBAL_STYLE = {
+    backgroundColor: "lightgrey",
+    bodyColor: "#222"
+};
 
 export const StyledH1 = styled(H1)`
     margin: 1em auto;
@@ -78,11 +82,11 @@ export const StyledItemHeader = styled(Row)`
     }
 `;
 
-export const StyledItemRow = styled(Row)`
-    && {
-        margin: 20px;
-    }
-`;
+export const StyledItemRow = styled(Row)(props => ({
+    margin: '20px',
+    backgroundColor: props.remind ? '#41A3E2' : GLOBAL_STYLE.backgroundColor
+}));
+
 
 
 export const StyledDatetimeWrapper = styled.div`
