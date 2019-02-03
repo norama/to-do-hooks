@@ -33,7 +33,7 @@ export const StyledButton = styled(Button)`
 
 export const StyledTextarea = styled(Textarea)`
     width: 100%;
-    height: 5.5em;
+    height: 100%;
     padding: 1em;
     line-height: 1.5em;
 `;
@@ -65,13 +65,14 @@ export const StyledItem = styled.div`
 
 export const StyledCheckboxWrapper = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
 `;
 
 export const StyledCheckbox = styled(Input)`
     width: 25px;
     height: 25px;
-    margin: 1.7em auto;
+    margin: auto;
     cursor: pointer;
 `;
 
@@ -83,7 +84,8 @@ export const StyledItemHeader = styled(Row)`
 
 export const StyledItemRow = styled(Row)(props => ({
     margin: '20px !important',
-    backgroundColor: props.remind ? '#41A3E2' : GLOBAL_STYLE.backgroundColor
+    backgroundColor: props.remind ? '#41A3E2' : GLOBAL_STYLE.backgroundColor,
+    border: props.remind ? '10px solid #41A3E2' : 'none'
 }));
 
 

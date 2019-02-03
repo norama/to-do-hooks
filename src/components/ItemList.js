@@ -37,7 +37,6 @@ const ItemList = ({ items, onChange, onRemind, remindItemId, onRemindFinished })
     return (
         <StyledItemList>
             <ItemListHeader />
-            <StyledScrollPanel>
                 {items.map((item) => (
                     <ItemRow
                         item={item}
@@ -46,7 +45,6 @@ const ItemList = ({ items, onChange, onRemind, remindItemId, onRemindFinished })
                         onRemindFinished={onRemindFinished}
                         key={item.id()}
                     />))}
-            </StyledScrollPanel>
             <Timer callback={handleReminders} period={LOOKUP} />
         </StyledItemList>
     );
