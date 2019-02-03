@@ -71,19 +71,18 @@ export const StyledCheckboxWrapper = styled.div`
 export const StyledCheckbox = styled(Input)`
     width: 25px;
     height: 25px;
-    margin: 1.8em auto;
+    margin: 1.7em auto;
     cursor: pointer;
 `;
 
 export const StyledItemHeader = styled(Row)`
     && {
-        margin: 10px 20px;
-        width: 96%;
+        margin: 20px;
     }
 `;
 
 export const StyledItemRow = styled(Row)(props => ({
-    margin: '20px',
+    margin: '20px !important',
     backgroundColor: props.remind ? '#41A3E2' : GLOBAL_STYLE.backgroundColor
 }));
 
