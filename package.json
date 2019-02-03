@@ -1,10 +1,12 @@
 {
   "name": "to-do-hooks",
+  "homepage": "https://norama.github.io/to-do-hooks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@bootstrap-styled/provider": "^1.4.2",
     "@bootstrap-styled/v4": "^2.0.22",
+    "gh-pages": "^2.0.1",
     "moment": "^2.24.0",
     "prop-types": "^15.6.2",
     "rc-datetime-picker": "^1.6.1",
@@ -16,6 +18,8 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
