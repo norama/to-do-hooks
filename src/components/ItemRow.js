@@ -81,7 +81,7 @@ const ItemRow = ({ item, onChange, remind, onRemindFinished }) => {
 
             <Col md={2}>
                 <StyledCheckboxWrapper>
-                    <StyledCheckbox type="checkbox" value={item.done()} onChange={handleDoneChange} width="25px" height="25px" cursor="pointer"/>
+                    <StyledCheckbox type="checkbox" checked={item.done()} onChange={handleDoneChange} width="25px" height="25px" cursor="pointer"/>
                 </StyledCheckboxWrapper>
             </Col>
 
