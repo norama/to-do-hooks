@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { toast } from 'react-toastify';
 
-import { Row, Col } from "@bootstrap-styled/v4";
+import { Col } from "@bootstrap-styled/v4";
 
 import { StyledItemRow, StyledCheckboxWrapper, StyledCheckbox, StyledTextarea } from './styles';
 import { StyledDatetimeWrapper, StyledDatetime, StyledDisabledDatetime } from './styles';
@@ -105,7 +105,10 @@ const ItemRow = ({ item, onChange, remind, onRemindFinished }) => {
 };
 
 ItemRow.propTypes = {
-    item: PropTypes.instanceOf(ToDoItem).isRequired
+    item: PropTypes.instanceOf(ToDoItem).isRequired,
+    onChange: PropTypes.func.isRequired,
+    remind: PropTypes.bool,
+    onRemindFinished: PropTypes.func.isRequired
 };
 
 export default ItemRow;

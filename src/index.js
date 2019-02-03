@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import BootstrapProvider from '@bootstrap-styled/provider';
 
 import { GLOBAL_STYLE } from './components/styles';
 

@@ -21,4 +21,9 @@ const Timer = ({ callback, period }) => {
     return null;
 };
 
+Timer.propTypes = {
+    callback: PropTypes.func.isRequired,
+    period: PropTypes.number.isRequired
+};
+
 export default Timer;

@@ -43,26 +43,6 @@ export const StyledItemList = styled.div`
     width: 100%;
 `;
 
-const itemHeightUnits = 5;
-const itemHeight = "" + itemHeightUnits + "em";
-const panelHeight = "" + (10 * itemHeightUnits) + "em";
-
-export const StyledScrollPanel = styled.div`
-    width: 100%;
-    height: ${panelHeight};
-    overflow-y: auto;
-`;
-
-export const StyledScrollContent = styled.div`
-    margin-right: 10px;
-    margin-left: 10px;
-`;
-
-export const StyledItem = styled.div`
-    width: 100%;
-    height: ${itemHeight};
-`;
-
 export const StyledCheckboxWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -92,15 +72,16 @@ export const StyledItemRow = styled(Row)(props => ({
 
 export const StyledDatetimeWrapper = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
 `;
 
 export const StyledDatetime = styled.div`
-    margin: 1.7em auto;
+    margin: auto;
 `;
 
 export const StyledDisabledDatetime = styled.div`
-    margin: 1.5em auto;
+    margin: auto;
 `;
 
 export const StyledDisabledInput = styled.input`

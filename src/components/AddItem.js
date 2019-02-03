@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Row, Col, Textarea, Button } from "@bootstrap-styled/v4";
+import { Row, Col } from "@bootstrap-styled/v4";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { StyledButton, StyledTextarea } from './styles';

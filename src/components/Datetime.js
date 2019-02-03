@@ -19,7 +19,7 @@ export const DatetimePicker = ({ datetime, onChange }) => {
     const datetimeShortcuts = {
         'Today': moment(),
         'Tomorrow': moment().add(1, 'days'),
-        'Clear': ''
+        'Clear': null
     };
 
     return (
@@ -49,3 +49,7 @@ export const Datetime = ({ datetime }) => (
 
     </DatetimePickerTrigger>
 );
+
+Datetime.propTypes = {
+    datetime: PropTypes.instanceOf(moment)
+};
